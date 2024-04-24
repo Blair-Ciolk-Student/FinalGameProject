@@ -7,6 +7,9 @@ public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenu;
     public static bool isPaused;
+    public Camera playerCam;
+    public GameObject cam2;
+    
 
     void Update()
     {
@@ -18,28 +21,48 @@ public class PauseMenu : MonoBehaviour
                 }
                 else
                 {
+                    
                     PauseGame();
                 }
             }
+        
 
         
     }
     void Start()
     {
         pauseMenu.SetActive(false);
+       
+        
     }
 
     public void PauseGame()
     {
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
+        // change camera from default to 2nd
+        cam2.SetActive(true);
+        playerCam.enabled = false;
+        playerCam.GetComponent<AudioListener>().enabled = false;
+        cam2.GetComponentInChildren<Camera>().GetComponent<AudioListener>().enabled = true;
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         isPaused = true;
     }
 
     public void ResumeGame()
     {
         pauseMenu.SetActive(false);
-            Time.timeScale = 1f;
+        Time.timeScale = 1f;
+
+        cam2.GetComponentInChildren<Camera>().GetComponent<AudioListener>().enabled = false;
+        playerCam.GetComponent<AudioListener>().enabled = true;
+        cam2.SetActive(false);
+        playerCam.enabled = true;
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         isPaused = false;   
     }
 

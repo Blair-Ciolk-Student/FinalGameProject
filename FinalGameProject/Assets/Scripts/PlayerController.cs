@@ -40,7 +40,8 @@ public class PlayerController : MonoBehaviour
 
         rb.AddForce(jumpForces, ForceMode.VelocityChange);
     }
-    void Look() {
+    void Look()
+    {
         transform.Rotate(Vector3.up * look.x * sensitivity);
 
         lookRotation += (-look.y * sensitivity);
@@ -62,17 +63,25 @@ public class PlayerController : MonoBehaviour
 
         rb.AddForce(velocityChange, ForceMode.VelocityChange);
     }
-
+    private void Update()
+    {
+        
+    }
 
     // Start is called before the first frame update
     void Start()
     {
+        
         Cursor.lockState = CursorLockMode.Locked;
     }
 
     void LateUpdate()
     {
-        Look();
+        
+            Look();
+
+        
+
     }
 
     public void SetGrounded(bool state)
