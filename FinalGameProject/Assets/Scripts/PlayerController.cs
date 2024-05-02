@@ -1,8 +1,11 @@
 using UnityEngine;
+using System;
 using UnityEngine.InputSystem;
+using Unity.VisualScripting;
 
 public class PlayerController : MonoBehaviour
 {
+   
 
     public Rigidbody rb;
     public GameObject camHolder;
@@ -11,6 +14,9 @@ public class PlayerController : MonoBehaviour
     private float lookRotation;
     public bool grounded;
 
+    
+
+    #region On Move Look and Jump
     public void OnMove(InputAction.CallbackContext context)
     {
         move = context.ReadValue<Vector2>();
@@ -25,11 +31,9 @@ public class PlayerController : MonoBehaviour
     {
         Jump();
     }
+    #endregion
 
-    private void FixedUpdate()
-    {
-        Move();
-    }
+    #region Movement Functions
     void Jump()
     {
         Vector3 jumpForces = Vector3.zero;
@@ -63,26 +67,40 @@ public class PlayerController : MonoBehaviour
 
         rb.AddForce(velocityChange, ForceMode.VelocityChange);
     }
-    private void Update()
+    #endregion
+
+    #region - System functions
+    void Awake()
     {
-        
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
-        Cursor.lockState = CursorLockMode.Locked;
+        rb = GetComponent<Rigidbody>();
+        if (enabled)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Console.WriteLine(Cursor.lockState);
+            return;
+        }
+        else
+        {
+            enabled = true;
+            return;
+        };
+    }
+
+    private void FixedUpdate()
+    {
+        Move();
     }
 
     void LateUpdate()
     {
-        
-            Look();
-
-        
-
+        Look();
     }
+    #endregion
 
     public void SetGrounded(bool state)
     {

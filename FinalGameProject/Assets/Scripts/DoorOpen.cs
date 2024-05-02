@@ -12,6 +12,7 @@ public class DoorOpen : MonoBehaviour
     void Start()
     {
         _animator = transform.Find("Door").GetComponent<Animator>();
+
         OpenPanel.SetActive(false);
 
     }
@@ -20,6 +21,7 @@ public class DoorOpen : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            _animator.SetBool("open", true);
             OpenPanel.SetActive(true);
         }
     }
@@ -36,14 +38,14 @@ public class DoorOpen : MonoBehaviour
     private bool IsOpenPanelActive
     {
         get
-        {
-            Debug.Log(OpenPanel.activeInHierarchy);
+        { 
             return OpenPanel.activeInHierarchy;
         }
     }
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(IsOpenPanelActive);
         if(IsOpenPanelActive)
         {
             if(Input.GetKey(KeyCode.E))
