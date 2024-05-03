@@ -718,6 +718,9 @@ MonoBehaviour:
   sensitivity: 0.1
   maxForce: 1
   jumpForce: 3
+  move: {x: 0, y: 0}
+  look: {x: 0, y: 0}
+  lookRotation: 0
   grounded: 0
 --- !u!54 &691288139
 Rigidbody:
@@ -1923,7 +1926,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1668697792
 RectTransform:
   m_ObjectHideFlags: 0
