@@ -24,16 +24,16 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("cursor visible?: " + Cursor.visible);
-        Debug.Log("cursor locked?: " + Cursor.lockState);
-        Debug.Log("Is game paused: " + isPaused);
+       // Debug.Log("cursor visible?: " + Cursor.visible);
+       // Debug.Log("cursor locked?: " + Cursor.lockState);
+    //Debug.Log("Is game paused: " + isPaused);
 
         if (Input.GetKeyDown(KeyCode.P))
         {
             if (isPaused)
             {
                 ResumeGame();
-                Debug.Log("Resume");
+               // Debug.Log("Resume");
             }
             else
             {
