@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         Vector3 MoveVector = transform.TransformDirection(PlayerInput);
-        float CurrentSpeed = Input.GetKey(KeyCode.LeftShift) ? RunSpeed : JumpStrength;
+        float CurrentSpeed = Input.GetKey(KeyCode.LeftShift) ? RunSpeed : WalkSpeed;
 
         CurrentMoveVelocity = Vector3.SmoothDamp(
             CurrentMoveVelocity,
@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
 
         Controller.Move(CurrentMoveVelocity * Time.deltaTime);
 
-        Ray groundCheckRay = new Ray(transform.position, Vector3.down);
+        Ray groundCheckRay = new(transform.position, Vector3.down);
         if(Physics.Raycast(groundCheckRay, 1.25f))
         {
             CurrentForceVelocity.y = -2f;
