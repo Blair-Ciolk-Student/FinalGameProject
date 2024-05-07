@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,49 +6,74 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenu;
     public static bool isPaused;
 
+    private CursorLockMode previousLockMode;
+    private bool previousCursorVisibility;
+
+    void Awake()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        if (pauseMenu != null)
+        {
+            pauseMenu.SetActive(false);
+        }
+
+        isPaused = false;
+    }
+
     void Update()
     {
-         if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                if(isPaused)
-                {
-                    ResumeGame();
-                }
-                else
-                {
-                    PauseGame();
-                }
-            }
+       // Debug.Log("cursor visible?: " + Cursor.visible);
+       // Debug.Log("cursor locked?: " + Cursor.lockState);
+    //Debug.Log("Is game paused: " + isPaused);
 
-        
-    }
-    void Start()
-    {
-        pauseMenu.SetActive(false);
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (isPaused)
+            {
+                ResumeGame();
+               // Debug.Log("Resume");
+            }
+            else
+            {
+                PauseGame();
+            }
+        }
     }
 
     public void PauseGame()
     {
-        pauseMenu.SetActive(true);
-        Cursor.lockState = CursorLockMode.None;
-
-        Time.timeScale = 0f;
         isPaused = true;
+        Time.timeScale = 0f;
+
+        pauseMenu.SetActive(true);
+
+        // Save previous cursor state
+        previousLockMode = Cursor.lockState;
+        previousCursorVisibility = Cursor.visible;
+
+        // Unlock cursor and make it visible
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     public void ResumeGame()
     {
+        isPaused = false;
+        Time.timeScale = 1f;
+
+        // Restore previous cursor state
+        Cursor.lockState = previousLockMode;
+        Cursor.visible = previousCursorVisibility;
+
         pauseMenu.SetActive(false);
-            Time.timeScale = 1f;
-        isPaused = false;   
-        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void GoToMainMenu()
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("TitleScreen");
-        isPaused = false;
     }
 
     public void QuitGame()
