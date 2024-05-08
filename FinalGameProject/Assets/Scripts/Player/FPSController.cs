@@ -21,9 +21,12 @@ public class FPSController : MonoBehaviour
     public bool canMove = true;
 
     CharacterController characterController;
+    
     void Start()
     {
         characterController = GetComponent<CharacterController>();
+
+        
         
     }
 
