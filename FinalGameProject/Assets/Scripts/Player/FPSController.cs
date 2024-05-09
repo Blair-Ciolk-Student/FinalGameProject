@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 [RequireComponent(typeof(CharacterController))]
 public class FPSController : MonoBehaviour
 {
@@ -21,33 +20,24 @@ public class FPSController : MonoBehaviour
     public bool canMove = true;
 
     CharacterController characterController;
-    
+
     void Start()
     {
         characterController = GetComponent<CharacterController>();
-
-        
-        
     }
 
     void Update()
     {
-        #region Handles Movement
         Vector3 forward = transform.TransformDirection(Vector3.forward);
         Vector3 right = transform.TransformDirection(Vector3.right);
 
-        //LShift run
         bool isRunning = Input.GetKey(KeyCode.LeftShift);
         float curSpeedX = canMove ? (isRunning ? runSpeed : walkSpeed) * Input.GetAxis("Vertical") : 0;
         float curSpeedY = canMove ? (isRunning ? runSpeed : walkSpeed) * Input.GetAxis("Horizontal") : 0;
         float movementDirectionY = moveDirection.y;
         moveDirection = (forward * curSpeedX) + (right * curSpeedY);
 
-
-        #endregion
-
-        #region Handles Jumping
-        if(Input.GetButton("Jump") && canMove && characterController.isGrounded)
+        if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
         {
             moveDirection.y = jumpPower;
         }
@@ -56,24 +46,31 @@ public class FPSController : MonoBehaviour
             moveDirection.y = movementDirectionY;
         }
 
-        if(!characterController.isGrounded)
+        if (!characterController.isGrounded)
         {
             moveDirection.y -= gravity * Time.deltaTime;
         }
-        #endregion
 
-        #region Handles Rotation
+        // Perform raycast to check for collisions with the ceiling
+        RaycastHit hit;
+        if (Physics.Raycast(playerCamera.transform.position, Vector3.up, out hit, Mathf.Infinity))
+        {
+            float distanceToCeiling = hit.distance;
+            if (distanceToCeiling < 1.0f) // Adjust the threshold as needed
+            {
+                // Move the player down to prevent clipping through the ceiling
+                transform.position -= Vector3.up * (1.0f - distanceToCeiling);
+            }
+        }
+
         characterController.Move(moveDirection * Time.deltaTime);
 
-        if(canMove)
+        if (canMove)
         {
             rotationX += -Input.GetAxis("Mouse Y") * lookSpeed;
             rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
             playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
             transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
-
         }
-        #endregion
     }
-
 }

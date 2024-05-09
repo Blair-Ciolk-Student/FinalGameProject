@@ -9,10 +9,12 @@ public class PauseMenu : MonoBehaviour
     private CursorLockMode previousLockMode;
     private bool previousCursorVisibility;
 
+    public FreezeCameraOnPause _freeze;
+
     public FPSController fpsControllerScript;
 
 
-
+   
     void Start()
     {
        
@@ -35,7 +37,7 @@ public class PauseMenu : MonoBehaviour
        // Debug.Log("cursor locked?: " + Cursor.lockState);
     //Debug.Log("Is game paused: " + isPaused);
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             if (isPaused)
             {
@@ -51,6 +53,9 @@ public class PauseMenu : MonoBehaviour
 
     public void PauseGame()
     {
+
+         _freeze.TogglePause();
+        
         isPaused = true;
         Time.timeScale = 0f;
 
@@ -64,13 +69,19 @@ public class PauseMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
-        fpsControllerScript.enabled = false;
+        if(fpsControllerScript.isActiveAndEnabled != true) {
+            fpsControllerScript.enabled = false;
+        
+        }
 
 
     }
 
     public void ResumeGame()
     {
+        
+
+         _freeze.TogglePause();
         isPaused = false;
         Time.timeScale = 1f;
 

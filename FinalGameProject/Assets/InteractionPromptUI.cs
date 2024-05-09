@@ -6,8 +6,8 @@ using UnityEngine;
 public class InteractionPromptUI : MonoBehaviour
 {
     private Camera _mainCam;
-    [SerializeField]private GameObject _uiPanel;
-    [SerializeField]private TextMeshProUGUI _promptText;
+    [SerializeField] private GameObject _uiPanel;
+    [SerializeField] private TextMeshProUGUI _promptText;
 
     private void Start()
     {
@@ -28,11 +28,18 @@ public class InteractionPromptUI : MonoBehaviour
         _promptText.text = promptText;
         _uiPanel.SetActive(true);
         IsDisplayed = true;
+        
     }
 
     public void Close()
     {
         _uiPanel.SetActive(false);
         IsDisplayed = false;
+
+
     }
+
+
+
+   
 }

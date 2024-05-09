@@ -13,13 +13,9 @@ public class FreezeCameraOnPause : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) // Change to whatever key you use to pause the game
-        {
         
-            TogglePause();
-        }
     }
-    void TogglePause()
+    public void TogglePause()
     {
         isPaused = !isPaused;
 
