@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenu;
-    public static bool isPaused;
+    [SerializeField]public static bool isPaused;
 
     private CursorLockMode previousLockMode;
     private bool previousCursorVisibility;
@@ -69,7 +69,7 @@ public class PauseMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
-        if(fpsControllerScript.isActiveAndEnabled != true) {
+        if(fpsControllerScript.isActiveAndEnabled == true) {
             fpsControllerScript.enabled = false;
         
         }

@@ -1,7 +1,4 @@
-
-using UnityEditor.Rendering.LookDev;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class StartBook : MonoBehaviour, IInteractable
 {
@@ -35,6 +32,8 @@ public class StartBook : MonoBehaviour, IInteractable
         GameObject cameraObject = GameObject.FindWithTag("MainCamera");
 
         FreezeCameraOnPause freezeCamOnP = cameraObject.GetComponent<FreezeCameraOnPause>();
+
+        
 
         Debug.Log("Opening Book");
 
