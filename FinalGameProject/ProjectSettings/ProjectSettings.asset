@@ -778,11 +778,11 @@ PlayerSettings:
   m_MobileRenderingPath: 1
   metroPackageName: FinalGameProject
   metroPackageVersion: 1.0.0.0
-  metroCertificatePath: 
+  metroCertificatePath: Assets/WSATestCertificate.pfx
   metroCertificatePassword: 
-  metroCertificateSubject: 
-  metroCertificateIssuer: 
-  metroCertificateNotAfter: 0000000000000000
+  metroCertificateSubject: BlairCiolkStudentOAISD
+  metroCertificateIssuer: BlairCiolkStudentOAISD
+  metroCertificateNotAfter: 002d182e30c5db01
   metroApplicationDescription: FinalGameProject
   wsaImages: {}
   metroTileShortName: FinalGameProject
