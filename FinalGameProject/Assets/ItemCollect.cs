@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class ItemCollect : MonoBehaviour, IInteractable
@@ -12,7 +11,7 @@ public class ItemCollect : MonoBehaviour, IInteractable
     [SerializeField] public Inventory inventory;
     [SerializeField] public PlayerInteraction playInteract;
 
-
+    [SerializeField] public int itemWorth;
 
     public void Collect()
     {
@@ -23,7 +22,9 @@ public class ItemCollect : MonoBehaviour, IInteractable
     public bool Interact(PlayerInteraction interactor)
     {
 
+        inventory._stolenWorth += itemWorth;
         inventory.BackPack(gameObject.name);
+        itemWorth = gameObject.GetComponent<ItemCollect>().itemWorth;
         Destroy(gameObject);
 
         return true;

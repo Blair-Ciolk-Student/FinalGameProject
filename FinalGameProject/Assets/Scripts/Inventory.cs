@@ -1,16 +1,20 @@
-using System.Collections;
+
 using System.Collections.Generic;
-using System.Xml.Schema;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+
+
     public List<string> stolen_goods;
     public int _amount;
+    public int _stolenWorth;
+
     // Start is called before the first frame update
     void Start()
     {
         _amount = 0;
+        
     }
 
     // Update is called once per frame
@@ -24,12 +28,18 @@ public class Inventory : MonoBehaviour
 
         stolen_goods.Add(itemName);
         _amount += 1;
+    
+        Debug.Log($"Item Name:{itemName}");
+        Debug.Log($"Total amount of items: {_amount}");
+        Debug.Log($"Total $$ stolen: ${_stolenWorth}");
 
-        foreach(var n in stolen_goods)
+        if(itemName == "Book")
         {
-        Debug.Log(itemName);
-        Debug.Log(_amount);
-
+            Debug.Log("Book has been stolen");
+            WinCondition winCondition = gameObject.AddComponent<WinCondition>();
+            winCondition.NextLevel();
         }
+        
+
     }
 }

@@ -14,5 +14,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/RedHouse.unity
     guid: 8af9cdcaad5bc5543919aa1c280beee8
+  - enabled: 1
+    path: Assets/Scenes/BlueHouse.unity
+    guid: e090716ea207c4449a2360d9bc8d6e43
+  - enabled: 1
+    path: Assets/Scenes/End.unity
+    guid: 57abc4ea1d3bdae46b7823e5e6747d1f
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
