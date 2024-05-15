@@ -94,8 +94,16 @@ MonoBehaviour:
     serializedHasVolumes:
     - sceneGUID: 9fc0d4010bbf28b4594072e72b8655ab
       hasProbeVolumes: 0
+    - sceneGUID: 00000000000000000000000000000000
+      hasProbeVolumes: 0
     bakingSets:
     - {fileID: 11400000, guid: 6721be131d4ff534f97846e3c7ef4dc0, type: 2}
+<<<<<<< Updated upstream
+=======
+    - {fileID: 11400000, guid: 7fe05f4e9dae08c4db3b8e26a2f759cd, type: 2}
+    - {fileID: 11400000, guid: a8a79f363402c9a438fce3de112ef24d, type: 2}
+    - {fileID: 11400000, guid: e17337cc96ca68a4b9f1b1f65a0798da, type: 2}
+>>>>>>> Stashed changes
     m_LightingScenario: Default
   m_PrefilteringModeMainLightShadows: 3
   m_PrefilteringModeAdditionalLight: 3

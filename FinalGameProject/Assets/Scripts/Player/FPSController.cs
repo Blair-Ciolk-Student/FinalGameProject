@@ -29,7 +29,18 @@ public class FPSController : MonoBehaviour
 
     void Update()
     {
+<<<<<<< Updated upstream
         #region Handles Movement
+=======
+        if (characterController.enabled)
+        {
+            Movement();
+        }
+    }
+
+    public void Movement()
+    {
+>>>>>>> Stashed changes
         Vector3 forward = transform.TransformDirection(Vector3.forward);
         Vector3 right = transform.TransformDirection(Vector3.right);
 
