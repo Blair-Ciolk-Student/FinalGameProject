@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
-using UnityEngine.SceneManagement;
+
 
 [RequireComponent(typeof(CharacterController))]
 public class FPSController : MonoBehaviour
@@ -31,7 +30,7 @@ public class FPSController : MonoBehaviour
 
     void Update()
     {
-        #region Handles Movement
+        
 
         if (characterController.enabled)
         {

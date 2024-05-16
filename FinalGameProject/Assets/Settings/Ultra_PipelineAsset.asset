@@ -91,10 +91,6 @@ MonoBehaviour:
   apvScenesData:
     m_ObsoleteSerializedBakingSets: []
     serializedBounds:
-    - sceneGUID: 9fc0d4010bbf28b4594072e72b8655ab
-      bounds:
-        m_Center: {x: 0, y: 0, z: 0}
-        m_Extent: {x: 81, y: 81, z: 81}
     - sceneGUID: 8af9cdcaad5bc5543919aa1c280beee8
       bounds:
         m_Center: {x: 0, y: 0, z: 0}
@@ -104,8 +100,6 @@ MonoBehaviour:
         m_Center: {x: 0, y: 0, z: 0}
         m_Extent: {x: 81, y: 81, z: 81}
     serializedHasVolumes:
-    - sceneGUID: 9fc0d4010bbf28b4594072e72b8655ab
-      hasProbeVolumes: 1
     - sceneGUID: 8af9cdcaad5bc5543919aa1c280beee8
       hasProbeVolumes: 1
     - sceneGUID: e090716ea207c4449a2360d9bc8d6e43
@@ -115,8 +109,6 @@ MonoBehaviour:
     - sceneGUID: 00000000000000000000000000000000
       hasProbeVolumes: 0
     bakingSets:
-    - {fileID: 11400000, guid: 6721be131d4ff534f97846e3c7ef4dc0, type: 2}
-
     - {fileID: 11400000, guid: 7fe05f4e9dae08c4db3b8e26a2f759cd, type: 2}
     - {fileID: 11400000, guid: a8a79f363402c9a438fce3de112ef24d, type: 2}
     - {fileID: 11400000, guid: e17337cc96ca68a4b9f1b1f65a0798da, type: 2}
