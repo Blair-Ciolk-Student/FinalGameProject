@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    public WinCondition winCondition;
 
 
     public List<string> stolen_goods;
@@ -17,11 +18,9 @@ public class Inventory : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
+
+    
 
     public void BackPack(string itemName)
     {
