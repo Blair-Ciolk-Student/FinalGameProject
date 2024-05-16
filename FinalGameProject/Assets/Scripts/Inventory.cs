@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-
+    public WinCondition winCondition;
 
     public List<string> stolen_goods;
     public int _amount;
@@ -32,7 +32,7 @@ public class Inventory : MonoBehaviour
         if(itemName == "Book")
         {
             Debug.Log("Book has been stolen");
-            WinCondition winCondition = gameObject.AddComponent<WinCondition>();
+             winCondition = gameObject.AddComponent<WinCondition>();
             winCondition.NextLevel();
         }
         
